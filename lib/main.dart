@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magic_line/TextContaint.dart';
 import 'painter.dart';
 import 'dart:typed_data';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -9,8 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello Flutter',
-      home: ExamplePage(),
+      title: 'Hello Diya\n Paint here',
+      home: TextContaintPage(),
     );
   }
 }
@@ -49,9 +50,9 @@ class _ExamplePageState extends State<ExamplePage> {
           icon: const Icon(Icons.content_copy),
           tooltip: 'New Painting',
           onPressed: () => setState(() {
-                _finished = false;
-                _controller = _newController();
-              }),
+            _finished = false;
+            _controller = _newController();
+          }),
         ),
       ];
     } else {
@@ -71,7 +72,11 @@ class _ExamplePageState extends State<ExamplePage> {
     }
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Hello Flutter'),
+          title: const Text('Welcome to Magic Line'),
+          leading: InkWell(
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => TextContaintPage())),
+              child: Icon(Icons.text_fields)),
           actions: actions,
           bottom: PreferredSize(
             child: DrawBar(_controller),
@@ -85,8 +90,7 @@ class _ExamplePageState extends State<ExamplePage> {
     setState(() {
       _finished = true;
     });
-    Navigator
-        .of(context)
+    Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
       return Scaffold(
         appBar: AppBar(
@@ -144,8 +148,8 @@ class DrawBar extends StatelessWidget {
                         child: Slider(
                   value: _controller.thickness,
                   onChanged: (double value) => setState(() {
-                        _controller.thickness = value;
-                      }),
+                    _controller.thickness = value;
+                  }),
                   min: 1.0,
                   max: 20.0,
                   activeColor: Colors.white,
@@ -180,8 +184,7 @@ class _ColorPickerButtonState extends State<ColorPickerButton> {
 
   void _pickColor() {
     Color pickerColor = _color;
-    Navigator
-        .of(context)
+    Navigator.of(context)
         .push(MaterialPageRoute(
             fullscreenDialog: true,
             builder: (BuildContext context) {
