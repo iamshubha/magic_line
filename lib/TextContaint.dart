@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:magic_line/BucketGetPage.dart';
 import 'package:magic_line/main.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
@@ -122,8 +123,8 @@ class _MyAppState extends State<MyApp> {
             appBar: AppBar(
               leading: InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => ExamplePage()));
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (_) => BucketGetPage()));
                 },
                 child: Icon(Icons.text_fields),
               ),
